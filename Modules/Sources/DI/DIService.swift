@@ -1,12 +1,13 @@
 import Foundation
 
 protocol DIServiceInstanceRetrieving {
+    var scope: DIServiceScope { get }
     func getInstance() -> Any
 }
 
 public final class DIService<T: Any>: DIServiceInstanceRetrieving {
     private let factory: (DIContainer) -> T
-    private var scope: DIServiceScope
+    private(set) var scope: DIServiceScope
     private var instance: T?
 
     weak var container: DIContainer?
