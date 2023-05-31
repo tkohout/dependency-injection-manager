@@ -29,4 +29,8 @@ public final class DIContainer: DIResolver {
         }
         return instance
     }
+
+    public func callAsFunction<T>() -> T {
+        return resolve(T.self)
+    }
 }

@@ -18,8 +18,8 @@ public final class FeatureAssembly: DIAssembly {
         container.register(FeatureRepository.self) { r in
             let loggerFactory = r.resolve(LoggerCreating.self)
             return FeatureRepositoryImpl(
-                stringStore: r.resolve((any StringStore).self),
-                dateStore: r.resolve((any DateStore).self),
+                stringStore: r(),
+                dateStore: r(),
                 logger: loggerFactory.make(name: "FeatureRepository")
             )
         }
