@@ -18,6 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
         let repository: FeatureRepository = DIManager.resolve(FeatureRepository.self)
+
+        let otherRepository = DIManager.resolve(OtherRepository.self)
+
         let viewController = ViewController(repository: repository)
 
         window?.rootViewController = viewController

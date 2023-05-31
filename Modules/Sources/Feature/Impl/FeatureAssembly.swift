@@ -7,13 +7,13 @@ public final class FeatureAssembly: DIAssembly {
     public init() {}
     
     public func assemble(container: DIContainer) {
-        container.register((any StringStore).self) { _ in
-            return StringStoreImpl()
-        }.singleton()
+        container
+            .register(StringStoreImpl.init, as: (any StringStore).self)
+            .singleton()
 
-        container.register((any DateStore).self) { _ in
-            return DateStoreImpl()
-        }.singleton()
+        container
+            .register(DateStoreImpl.init, as: (any DateStore).self)
+            .singleton()
 
         container.register(FeatureRepository.self) { r in
             let loggerFactory = r.resolve(LoggerCreating.self)
@@ -23,5 +23,7 @@ public final class FeatureAssembly: DIAssembly {
                 logger: loggerFactory.make(name: "FeatureRepository")
             )
         }
+
+        container.register(OtherRepositoryImpl.init, as: OtherRepository.self)
     }
 }
