@@ -1,44 +1,49 @@
 # dependency-injection-manager
 Dependency Injection Manager PoC
 
-This is a PoC for a homegrown dependency injection manager that contains just basic features such as dependency registration and resolution, assemblies and singleton scope support.
+This is a PoC for a homegrown dependency injection manager that contains just basic features such as:
+- Dependency registration and resolution
+- Resolution always returns an instance or else it crashes
+- Modularized registration through assemblies
+- Singleton scope support
+- Automatic synchronized resolution for singleton scoped instances when accessed outside of the main thread
 
 ## Usage
 
 Simple registration and resolution
 ```
-DIManager.register((any GetPersonaTask).self) { _ in
-  return GetPersonaTaskImpl()
+DIManager.register((any GetDataTask).self) { _ in
+  return GetDataTaskImpl()
 }
 
-// PersonaStore registered as a singleton
-DIManager.register((any PersonaStore).self) { _ in
-  return PersonaStoreImpl()
+// DataStore registered as a singleton
+DIManager.register((any DataStore).self) { _ in
+  return DataStoreImpl()
 }.singleton()
 
-DIManager.register(PersonaRepository.self) { r in
-  return PersonaRepositoryImpl(
-    getPersonaTask: r.resolve((any GetPersonaTask).self),
-    personaStore: r.resolve((any PersonaStore).self)
+DIManager.register(DataRepository.self) { r in
+  return DataRepositoryImpl(
+    getDataTask: r.resolve((any GetDataTask).self),
+    dataStore: r.resolve((any DataStore).self)
   )
 }
 
-let personaRepository = DIManager.resolve(PersonaRepository.self)
-_ = personaRepository.getPersona(id: "1234")
+let dataRepository = DIManager.resolve(DataRepository.self)
+_ = dataRepository.getData(id: "1234")
 ```
 
 Modularized registration using assemblies
 ```
-final class PersonaAssembly: DIAssembly {
+final class DataAssembly: DIAssembly {
   func assemble(container: DIContainer) {
-    DIManager.register((any PersonaStore).self) { _ in
-      return PersonaStoreImpl()
+    DIManager.register((any DataStore).self) { _ in
+      return DataStoreImpl()
     }.singleton()
     
-    DIManager.register(PersonaRepository.self) { r in
-      return PersonaRepositoryImpl(
-        getPersonaTask: r.resolve((any GetPersonaTask).self),
-        personaStore: r.resolve((any PersonaStore).self)
+    DIManager.register(DataRepository.self) { r in
+      return DataRepositoryImpl(
+        getDataTask: r.resolve((any GetDataTask).self),
+        dataStore: r.resolve((any DataStore).self)
       )
     }
   }
@@ -47,12 +52,12 @@ final class PersonaAssembly: DIAssembly {
 ...
 
 DIManager.assemble(assemblies: [
-  PersonaAssembly(),
+  DataAssembly(),
   ...
 ])
 
 ...
 
-let personaRepository = DIManager.resolve(PersonaRepository.self)
-_ = personaRepository.getPersona(id: "1234")
+let dataRepository = DIManager.resolve(DataRepository.self)
+_ = dataRepository.getData(id: "1234")
 ```
