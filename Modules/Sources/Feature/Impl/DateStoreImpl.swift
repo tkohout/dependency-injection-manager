@@ -1,18 +1,20 @@
 import Foundation
 import FeatureApi
 
-final class DateStoreImpl: DateStore {
+public final class DateStoreImpl: DateStore {
     private var storedDate: Date?
 
-    func set(data: Date?) {
+    public init() {}
+
+    public func set(data: Date?) {
         storedDate = data
     }
 
-    func get() -> Date? {
+    public func get() -> Date? {
         return storedDate
     }
 
-    func clear() {
+    public func clear() {
         storedDate = nil
     }
 }
