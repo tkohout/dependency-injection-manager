@@ -1,18 +1,20 @@
 import Foundation
 import FeatureApi
 
-final class StringStoreImpl: StringStore {
+public final class StringStoreImpl: StringStore {
     private var storedString: String?
 
-    func set(data: String?) {
+    public init() {}
+
+    public func set(data: String?) {
         storedString = data
     }
 
-    func get() -> String? {
+    public func get() -> String? {
         return storedString
     }
 
-    func clear() {
+    public func clear() {
         storedString = nil
     }
 }
