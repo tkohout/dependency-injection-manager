@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC6451C32A2F2F93003B68B1 /* HomeApi in Frameworks */ = {isa = PBXBuildFile; productRef = AC6451C22A2F2F93003B68B1 /* HomeApi */; };
+		AC6451C52A2F2F93003B68B1 /* HomeImpl in Frameworks */ = {isa = PBXBuildFile; productRef = AC6451C42A2F2F93003B68B1 /* HomeImpl */; };
 		B87574BF2A1E078300BCC732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87574BE2A1E078300BCC732 /* AppDelegate.swift */; };
 		B87574C12A1E078300BCC732 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87574C02A1E078300BCC732 /* SceneDelegate.swift */; };
 		B87574C32A1E078300BCC732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87574C22A1E078300BCC732 /* ViewController.swift */; };
@@ -60,10 +62,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6451C32A2F2F93003B68B1 /* HomeApi in Frameworks */,
 				B89FF0FE2A21068C0073E600 /* FeatureApi in Frameworks */,
 				B89FF1002A21068C0073E600 /* FeatureImpl in Frameworks */,
 				B89FF1022A21068C0073E600 /* Log in Frameworks */,
 				B89FF0FA2A21068C0073E600 /* Core in Frameworks */,
+				AC6451C52A2F2F93003B68B1 /* HomeImpl in Frameworks */,
 				B89FF0FC2A21068C0073E600 /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +170,8 @@
 				B89FF0FD2A21068C0073E600 /* FeatureApi */,
 				B89FF0FF2A21068C0073E600 /* FeatureImpl */,
 				B89FF1012A21068C0073E600 /* Log */,
+				AC6451C22A2F2F93003B68B1 /* HomeApi */,
+				AC6451C42A2F2F93003B68B1 /* HomeImpl */,
 			);
 			productName = TestingGrounds;
 			productReference = B87574BB2A1E078300BCC732 /* TestingGrounds.app */;
@@ -613,6 +619,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC6451C22A2F2F93003B68B1 /* HomeApi */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HomeApi;
+		};
+		AC6451C42A2F2F93003B68B1 /* HomeImpl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HomeImpl;
+		};
 		B89FF0F92A21068C0073E600 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;

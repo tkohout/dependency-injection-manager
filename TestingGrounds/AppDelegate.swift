@@ -7,6 +7,7 @@
 
 import DI
 import FeatureImpl
+import HomeImpl
 import Log
 import UIKit
 
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DIManager.assemble(assemblies: [
             LoggerAssembly(),
-            FeatureAssembly()
+            FeatureAssembly(),
+            HomeAssembly()
         ])
 
         return true

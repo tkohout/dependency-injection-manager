@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.7.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -110,3 +110,40 @@ package.products.append(
         )
     ]
 )
+
+// MARK: - Home
+package.targets.append(
+    contentsOf: [
+        .target(
+            name: "HomeApi",
+            dependencies: [
+                "Core"
+            ],
+            path: "Sources/Home/Api"
+        ),
+        .target(
+            name: "HomeImpl",
+            dependencies: [
+                "Core",
+                "DI",
+                "HomeApi",
+                "Log"
+            ],
+            path: "Sources/Home/Impl"
+        )
+    ]
+)
+
+package.products.append(
+    contentsOf: [
+        .library(
+            name: "HomeApi",
+            targets: ["HomeApi"]
+        ),
+        .library(
+            name: "HomeImpl",
+            targets: ["HomeImpl"]
+        )
+    ]
+)
+

@@ -8,6 +8,7 @@
 import DI
 import FeatureApi
 import UIKit
+import HomeApi
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -19,6 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let repository: FeatureRepository = DIManager.resolve(FeatureRepository.self)
         let viewController = ViewController(repository: repository)
+
+        let homeFactory = DIManager.resolve(HomeViewControllerFactory.self)
+        let homeVC = homeFactory.make(usage: .movies)
 
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
