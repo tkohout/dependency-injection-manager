@@ -24,6 +24,10 @@ public final class FeatureAssembly: DIAssembly {
             )
         }
 
+        container.registerWithParams(FeatureRepository.self, parameters: "test") { r in
+            r.resolve(FeatureRepository.self)
+        }
+
         container.register(OtherRepositoryImpl.init, as: OtherRepository.self)
     }
 }
